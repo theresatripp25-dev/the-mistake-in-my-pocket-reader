@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Mistake in My Pocket</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f2e8;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    header {
+      padding: 18px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    #reader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      padding: 20px;
+    }
+
+    #page {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    button {
+      padding: 12px 22px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #333;
+      color: white;
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    #pageNumber {
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>The Mistake in My Pocket</h1>
+  </header>
+
+  <main id="reader">
+    <img id="page" alt="Book page">
+  </main>
+
+  <div class="controls">
+    <button id="previous">← Previous</button>
+
+    <span id="pageNumber">Page 1 of 52</span>
+
+    <button id="next">Next →</button>
+  </div>
+
+  <script>
+    const totalPages = 52;
+    let currentPage = 1;
+
+    const page = document.getElementById("page");
+    const pageNumber = document.getElementById("pageNumber");
+    const previous = document.getElementById("previous");
+    const next = document.getElementById("next");
+
+    function showPage() {
+      page.src = "pages/page-" +
+        String(currentPage).padStart(2, "0") +
+        ".png";
+
+      pageNumber.textContent =
+        "Page " + currentPage + " of " + totalPages;
+
+      previous.disabled = currentPage === 1;
+      next.disabled = currentPage === totalPages;
+    }
+
+    previous.addEventListener("click", function () {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage();
+      }
+    });
+
+    next.addEventListener("click", function () {
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage();
+      }
+    });
+
+    showPage();
+  </script>
+
+</body>
+</html>
