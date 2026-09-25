@@ -148,10 +148,13 @@
     let touchEndX = 0;
     page.addEventListener("touchstart", function(event){
       touchStartX = event.changedTouches[0].screenX;
+      touchEndX = touchStartX;
+  
     });
     page.addEventListener("touchend", function(event) {
       touchEndX = event.changedTouches[0].screenX;
       let swipeDistance = touchEndX - touchStartX;
+      if(Math.abs(swipeDistance) < 50) return;
       if (swipeDistance < -50 && currentPage < totalPages){
         currentPage++;
         showPage();
