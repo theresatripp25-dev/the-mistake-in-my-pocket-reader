@@ -94,7 +94,7 @@
   </header>
 
   <main id="reader">
-    <img id="page" alt="Book page">
+    <img id="page" alt="Page 1 of The Mistake in My Pocket">
   </main>
 
   <div class="controls">
@@ -122,6 +122,7 @@
       pageNumber.textContent =
         "Page " + currentPage + " of " + totalPages;
 
+      page,alt = "Page " + currentPage + " + totalPages + " of The Mistake in My Pocket";
       previous.disabled = currentPage === 1;
       next.disabled = currentPage === totalPages;
     }
