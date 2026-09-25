@@ -145,12 +145,12 @@
       }
     });
     let touchStartX = null;
-    page.addEventListener(touchstart", function(event) {
+    page.addEventListener("touchstart", function(event) {
       touchStartX = event.changedTouches[0].clientX;
     });
-    page.addEventListener(touchend", function(event) {
+    page.addEventListener("touchend", function(event) {
       const touchEndX = event.changedTouches[0].clientX;
-      const swiprDistance = touchEndX - touchStartX;
+      const swipeDistance = touchEndX - touchStartX;
       if (swipeDistance <= -50 && currentPage < totalPages) {
         currentPage++;
         showPage();
@@ -159,7 +159,7 @@
         currentPage--;
         showPage();
       }
-      touchStartX = null:
+      touchStartX = null;
     });
         
   </script>
