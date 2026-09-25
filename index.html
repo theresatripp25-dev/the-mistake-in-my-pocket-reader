@@ -144,6 +144,24 @@
         showPage();
       }
     });
+    let touchStartX = 0;
+    let touchEndX = 0;
+    page.addEventListener("touchstart", function(event){
+      touchStartX = event.changedTouches[0].screenX;
+    });
+    page.addEventListener("touchend", function(event) {
+      touchEndX = event.changedTouches[0].screenX;
+      let swipeDistance = touchEndX - touchStartX;
+      if (swipeDistance < -50 && currentPage < totalPages){
+        currentPage++;
+        showPage();
+      }
+      if (swipeDistance > 50 && curentPage > 1) {
+        currentPage--;
+        showPage();
+      }
+    });
+        
   </script>
 
 </body>
