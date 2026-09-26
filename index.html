@@ -99,9 +99,10 @@
 
   <div class="controls">
     <button id="previous">← Previous</button>
+
     <span id="pageNumber">Page 1 of 52</span>
 
-   <button id="next">Next →</button>
+    <button id="next">Next →</button>
   </div>
 
   <script>
@@ -121,7 +122,6 @@
       pageNumber.textContent =
         "Page " + currentPage + " of " + totalPages;
 
-      
       previous.disabled = currentPage === 1;
       next.disabled = currentPage === totalPages;
     }
